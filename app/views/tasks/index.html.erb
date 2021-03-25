@@ -1,0 +1,20 @@
+  
+    <table class="table">  
+        <tr>
+            <th class="text-center">お気に入りボタン</th>
+            <th class="text-center">タスク名</th>
+            <th class="text-center">次の工程</th>
+            <th class="text-center">次の工程</th>
+        </tr>
+        
+        <% @tasks.each do |task| %>
+            <tr>
+                <td><%=render "favorite_button" task: task%></td>
+                <td><%= link_to task.content, edit_task_path(task) %></td>
+                <td><%=task.next_procedure_content %></td>
+                <td><%=task.next_procedure_date%></td>
+                <td><%=render "finish_button" task: task%><td>
+            <tr>
+        <% end %>
+    </table>
+  <%= paginate users %>
