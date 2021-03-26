@@ -1,5 +1,6 @@
 class Task < ApplicationRecord
   belongs_to :user
+  has_many :procedures
    scope :unfinish, -> {where(finishment: false)}
    #タスク完了ボタンの際使う
   def next_procedure_content
