@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   def index
-    @tasks=Task.order(id: :desc).page(params[:page]).per(25)
+    @tasks = current_user.tasks
   end
 
   def new
