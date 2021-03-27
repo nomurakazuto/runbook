@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     member do
       post :finishment
       get :favorites
+      post :favorite
       post :complete
     end
   end
