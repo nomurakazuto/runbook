@@ -1,0 +1,9 @@
+
+    <%= form_with(model: task, url: complete_task_path(id: task.id), local: true, method: :post, data: { confirm: '本当に削除してよろしいですか？' }) do |f| %>
+      <%= hidden_field_tag :id, task.id %>
+      <%= hidden_field_tag :finishment %>
+      <%= f.submit 'タスク完了', class: 'btn btn-warning btn-block' %>
+    <% end %>
+
+    
+

@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   def index
-    @tasks = current_user.tasks
+    @tasks = current_user.tasks.where(finishment: false)
   end
 
   def new
@@ -51,7 +51,16 @@ class TasksController < ApplicationController
   
   
    def complete
+     @task = current_user.tasks.find(params[:id])
      @task.change_status
+     if @task.save
+       flash[:success]="タスクを完了しました"
+       
+     else
+       flash[:danger]="タスクを完了することができませんでした"
+     end
+     
+     
    end
   
   
