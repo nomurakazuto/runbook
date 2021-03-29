@@ -15,7 +15,12 @@ class TasksController < ApplicationController
       render :new
     end
   end
-
+  
+  def show
+     @task = current_user.tasks.find_by(id: params[:id])
+     @procedures = @task.procedures
+  end
+  
   def edit
      @task = current_user.tasks.find_by(id: params[:id])
   end

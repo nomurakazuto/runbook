@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
   
-  resources :tasks, only: [:index, :new, :create, :edit, :update] do
+  resources :tasks, only: [:index, :new, :create, :edit, :update, :show] do
     member do
       post :finishment
       get :favorites
