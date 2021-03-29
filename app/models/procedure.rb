@@ -5,9 +5,9 @@ class Procedure < ApplicationRecord
   
   def check_finishment
       if self.finishment == true
-          puts "完了"
+         return  "完了"
       else
-          puts "未完了"
+         return "未完了"
       end
   end
   
