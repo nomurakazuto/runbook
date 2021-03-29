@@ -2,21 +2,27 @@ class Task < ApplicationRecord
   validates :content, presence: true, length: { maximum: 255 }
   belongs_to :user
   has_many :procedures
-  scope :unfinish, -> {where(finishment: false)}
+  scope :unfinish, -> {where(finishment: false).order(created_at: :desc)}
    #タスク完了ボタンの際使う
   def next_procedure_content
-      self.procedures.each do |procedure|
-          unless procedure.find_by(finishment: false)
-              return procedure.content
-          end
+      
+      @procedure = self.procedures.find_by(finishment: false)
+      
+      if @procedure
+          return @procedure.content
+      else
+          puts "次の工程はありません"
       end
+    
   end
   
-  def next_procedure_content
-      self.procedures.each do |procedure|
-          unless procedure.find_by(finishment: false)
-              return procedure.date
-          end
+  def next_procedure_date
+      @procedure = self.procedures.find_by(finishment: false)
+      
+      if @procedure
+          return @procedure.deadline
+      else
+          puts "次の工程はありません"
       end
   end
   
