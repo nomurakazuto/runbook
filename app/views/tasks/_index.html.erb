@@ -7,13 +7,10 @@
             <th class="text-center">タスク完了</th>
         </tr>
         
-        <%= @tasks.each do |task| %>
+        <%= current_user.tasks.each do |task| %>
             <tr>
-                <td class="text-right"><%=render "favorite_button", task: task%></td>
+                <td class="text-right"><%=render "tasks/favorite_button", task: task %></td>
                 <td class="text-right"><%= link_to task.content, edit_task_path(task) %></td>
-                <td class="text-right"><%=task.next_procedure_content %></td>
-                <td class="text-right"><%=task.next_procedure_date%></td>
-                <td class="text-right"><%=render "finish_button", task: task%><td>
             <tr>
         <% end %>
     </table>

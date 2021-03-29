@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       get :favorites
       post :favorite
       post :complete
+      
     end
   end
   
