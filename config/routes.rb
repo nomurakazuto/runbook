@@ -20,6 +20,13 @@ Rails.application.routes.draw do
     end
   end
   
+  resources :procedures, only: [:new, :create, :edit, :update]  do
+    member do
+      
+    end
+  end
+  
+  
   get 'signup', to: 'users#new'
   
   resources :users, only: [:new, :create]

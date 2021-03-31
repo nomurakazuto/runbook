@@ -8,23 +8,25 @@
         <div class="col-sm-2"><%= link_to "タスク編集", edit_task_path(@task),class: "btn btn-primary" %></div>
         <div class="col-sm-2"><%=render "tasks/finish_button", task: @task%></div>
         
-        
-        <table class="table table-bordered">
-          <tr>
-            <th>このタスクの手順一覧</th>
-            <th>期限</th>
-            <th>完了した?</th>
-            <th>手順編集、完了、未完了変更</th>
-          </tr>
+        <div class="offset-sm-1 col-sm-10">
+          <table class="table table-bordered">
+            <tr>
+              <th>このタスクの手順一覧</th>
+              <th>期限</th>
+              <th>完了した?</th>
+              <th>手順編集、完了、未完了変更</th>
+            </tr>
           
-          <%= @procedures.each do |procedure| %>
-          <tr>
-            <td><%= procedure.content %></td>
-            <td><%= procedure.deadline %></td>
-            <td><%= procedure.check_finishment %></td> <!--procedure.rbで定義-->
-            <td><td class="text-right"><%=render "procedure/finish_button", procedure: procedure%></td></td>
-          </tr>
-          <% end %>
-        </table>
+            <%= @procedures.each do |procedure| %>
+            <tr>
+              <td><%= procedure.content %></td>
+              <td><%= procedure.deadline %></td>
+              <td><%= procedure.check_finishment %></td> <!--procedure.rbで定義-->
+              <td><%=link_to "手順編集、完了、未完了変更", edit_procedure_path(procedure), class: "btn btn-primary"%></td>
+            </tr>
+            <% end %>
+          </table>
+        </div>
+        <div class="offset-sm-4 col-sm-4"><%=link_to "手順新規作成", new_procedure_path, class: "btn btn-success"%></div>
     </div>
 </div>
