@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :tasks, only: [:index, :new, :create, :edit, :update, :show] do
     member do
       post :finishment
-      get :favorites
+      get :favorited_items
       post :favorite
       post :complete
       
@@ -21,9 +21,6 @@ Rails.application.routes.draw do
   end
   
   resources :procedures, only: [:new, :create, :edit, :update]  do
-    member do
-      
-    end
   end
   
   

@@ -29,6 +29,8 @@ class ProceduresController < ApplicationController
     end 
   end
   
+  
+  
   private
 
   def procedure_params
