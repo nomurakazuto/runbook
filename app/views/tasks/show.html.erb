@@ -16,8 +16,8 @@
               <th>完了した?</th>
               <th>手順編集、完了、未完了変更</th>
             </tr>
-          
-            <%= @procedures.each do |procedure| %>
+            
+            <% @procedures.each do |procedure| %>
             <tr>
               <td><%= procedure.content %></td>
               <td><%= procedure.deadline %></td>

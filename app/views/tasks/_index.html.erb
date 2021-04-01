@@ -8,9 +8,9 @@
             <th class="text-center">期限</th>
             <th class="text-center">タスク完了</th>
         </tr>
-            
-        <%= current_user.tasks.where(finishment: false).each do |task| %>
-            
+        
+        <% @tasks.each do |task| %>
+        
             <tr>
                 <td class="text-right"><%=render "tasks/favorite_button", task: task %></td>
                 <td class="text-right"><%= link_to task.content, task_path(task) %></td>

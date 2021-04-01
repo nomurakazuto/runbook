@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   def index
-    @tasks = current_user.tasks.where(finishment: false)
+    
   end
 
   def new
@@ -18,7 +18,9 @@ class TasksController < ApplicationController
   
   def show
      @task = current_user.tasks.find_by(id: params[:id])
+     
      @procedures = @task.procedures
+     session[:task_id]=params[:id]
   end
   
   def edit
@@ -27,10 +29,10 @@ class TasksController < ApplicationController
 
   def update
     @task = current_user.tasks.find_by(id: params[:id])
-    @task.content = params[:content]
-    if @task.save
+    
+    if @task.update(task_params)
       flash[:success]="編集に成功しました"
-      redirect_to "/"
+      redirect_to task_path(@task)
     else
       flash[:danger]="編集に失敗しました"
       render :edit
