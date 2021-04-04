@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before_action :set_task, only: [:show, :edit, :update, :favorite, :complete, :complete, :duplicate]
   def index
     
   end
@@ -17,18 +18,18 @@ class TasksController < ApplicationController
   end
   
   def show
-     @task = current_user.tasks.find_by(id: params[:id])
+    
      
      @procedures = @task.procedures
      session[:task_id]=params[:id]
   end
   
   def edit
-     @task = current_user.tasks.find_by(id: params[:id])
+     
   end
 
   def update
-    @task = current_user.tasks.find_by(id: params[:id])
+    
     
     if @task.update(task_params)
       flash[:success]="編集に成功しました"
@@ -42,7 +43,7 @@ class TasksController < ApplicationController
   end
   
   def favorite
-    @task = current_user.tasks.find(params[:id])
+    
      
     @task.favorite = params[:favorite]
     
@@ -58,22 +59,47 @@ class TasksController < ApplicationController
   
   
    def complete
-     @task = current_user.tasks.find(params[:id])
+    
      @task.change_status
      if @task.save
        flash[:success]="タスクを完了しました"
-       
+       redirect_to "/"
      else
        flash[:danger]="タスクを完了することができませんでした"
+       render "/"
      end
      
      
    end
   
+  def favorited_items
+    @tasks = current_user.tasks.where(favorite: true)
+  end
+  
+  def duplicate
+    @task=current_user.tasks.find_by(id: params[:id])
+    @cloned_task=@task.deep_clone(include: [:procedures])
+    if @cloned_task
+      @cloned_task.favorite=false
+      @cloned_task.finishment=false
+      if @cloned_task.save
+        flash[:success]="タスクをコピーしました"
+        redirect_to task_path(@cloned_task)
+      end
+    else
+        flash.now[:danger]="タスクをコピーできませんでした"
+        render "tasks/favorited_items"
+    end
+    
+  end
   
   private
 
   def task_params
     params.require(:task).permit(:content, :favorite, :finishment)
+  end
+  
+  def set_task 
+    @task = current_user.tasks.find(params[:id])
   end
 end

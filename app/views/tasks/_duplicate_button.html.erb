@@ -1,0 +1,6 @@
+    
+    <%= form_with(model: task, url: duplicate_task_path(id: task.id), local: true, method: :post) do |f| %>
+      <%= hidden_field_tag :id, task.id %>
+      
+      <%= f.submit 'このタスクをコピーする', class: 'btn btn-primary btn-block' %>
+    <% end %>
