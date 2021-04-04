@@ -54,3 +54,4 @@ production:
   database: runbook_production
   username: runbook
   password: <%= ENV['MESSAGE-BOARD_DATABASE_PASSWORD'] %>
+default4rfs
