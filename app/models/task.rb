@@ -16,6 +16,14 @@ class Task < ApplicationRecord
     
   end
   
+  def favorite_status
+      if self.favorite == true
+          puts "お気に入り登録済み"
+      else
+          puts "お気に入り未登録"
+      end
+  end
+  
   def next_procedure_date
       @procedure = self.procedures.find_by(finishment: false)
       

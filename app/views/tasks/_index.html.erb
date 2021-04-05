@@ -1,25 +1,23 @@
-<div class="content">
- <div class="row">
-  <table class="table">  
-        <tr>
-            <th class="text-center">お気に入りボタン</th>
-            <th class="text-center">タスク名</th>
-            <th class="text-center">次の工程</th>
-            <th class="text-center">期限</th>
-            <th class="text-center">タスク完了</th>
-        </tr>
-        
-        <% @tasks.each do |task| %>
-        
+
+      <table class="table">  
             <tr>
-                <td class="text-right"><%=render "tasks/favorite_button", task: task %></td>
-                <td class="text-right"><%= link_to task.content, task_path(task) %></td>
-                <td class="text-right"><%=task.next_procedure_content%></td>
-                <td class="text-right"><%=task.next_procedure_date%></td>
-                <td class="text-right"><%=render "tasks/finish_button", task: task%></td>
-            <tr>
-        <% end %>
-    </table>
-    <div class="offset-sm-4 col-sm-4"><%=link_to "タスク新規作成", new_task_path, class: "btn btn-success"%></div>
- </div>
-</div>
+                <th class="text-center">お気に入りボタン</th>
+                <th class="text-center">タスク名</th>
+                <th class="text-center">次の工程</th>
+                <th class="text-center">期限</th>
+                <th class="text-center">タスク完了</th>
+            </tr>
+        
+            <% @tasks.each do |task| %>
+        
+                <tr>
+                    <td class="text-right"><%=render "tasks/favorite_button", task: task %></td>
+                    <td class="text-right"><%= link_to task.content, task_path(task) %></td>
+                    <td class="text-right"><%=task.next_procedure_content%></td>
+                    <td class="text-right"><%=task.next_procedure_date%></td>
+                    <td class="text-right"><%=render "tasks/finish_button", task: task%></td>
+                <tr>
+            <% end %>
+      </table>
+      <div class="offset-sm-4 col-sm-4"><%=link_to "タスク新規作成", new_task_path, class: "btn btn-success"%></div>
+  
