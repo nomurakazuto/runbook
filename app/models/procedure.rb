@@ -1,5 +1,7 @@
 class Procedure < ApplicationRecord
   belongs_to :task
+  validates :content, presence: true, length: { maximum: 255 }
+  validates :deadline, presence: true
   
   #validatesを設定する必要あり
   

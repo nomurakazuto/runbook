@@ -11,7 +11,7 @@ class ProceduresController < ApplicationController
       redirect_to task_path(@task)
     else
       flash[:danger]="手順を追加できませんでした"
-      redirect_to :new
+      render new_procedure_path
     end 
   end
 
@@ -25,7 +25,7 @@ class ProceduresController < ApplicationController
       redirect_to task_path(@task)
     else
       flash[:danger]="手順を編集できませんでした"
-      redirect_to :edit
+      render :edit
     end 
   end
   

@@ -11,9 +11,11 @@ class TasksController < ApplicationController
   def create
     @task = current_user.tasks.new(task_params)
     if @task.save
-      redirect_to "/"
+      flash[:success]="タスクを新規作成しました"
+      redirect_to root_path
     else
-      render :new
+      flash[:danger]="タスクを作成できませんでした"
+      render "tasks/new"
     end
   end
   

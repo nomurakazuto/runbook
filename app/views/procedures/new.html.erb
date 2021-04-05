@@ -3,8 +3,9 @@
         <div class"offset-sm-4 col-sm-4"><h1><%=@task.content%>に手順の追加</h1></div>
     </div>
     <div class="row">
-        <div class="offset-sm-3 col-sm-6">
-            <%= form_with(model: @procedure, local: true) do |f| %>
+      <div class="offset-sm-3 col-sm-6">
+        <%= form_with(model: @procedure, local: true) do |f| %>
+          <%= render 'layouts/error_messages', model: f.object %>
           <div class="form-group">
             
             <%= f.label :content, '手順名' %>
@@ -19,6 +20,6 @@
 
           <%= f.submit '投稿', class: 'btn btn-primary' %>
         <% end %>
-        </div>
+      </div>
     </div>
 </div>
