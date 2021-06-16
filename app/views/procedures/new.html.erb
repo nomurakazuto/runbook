@@ -1,9 +1,9 @@
 <div class="content">
     
-    <h1><%=@task.content%>に手順の追加</h1>
+    <h1><span><%=@task.content%></span>に手順の追加</h1>
    
     <div class="row">
-      <div class="offset-sm-3 col-sm-6">
+      <div class="offset-sm-2 col-sm-8">
         <%= form_with(model: @procedure, local: true) do |f| %>
           <%= render 'layouts/error_messages', model: f.object %>
           <div class="form-group">
@@ -20,7 +20,7 @@
 
           <%= f.submit '投稿', class: 'btn btn-primary' %>
         <% end %>
-        <%=link_to "タスク詳細に戻る", task_path(@task), class: "btn btn-success"%>
+        <%=link_to "タスク詳細に戻る", task_path(@task), class: "mt-4 btn btn-success"%>
       </div>
       
     </div>

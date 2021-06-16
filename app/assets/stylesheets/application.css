@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+ .main-navbar{
+     background-color:rgb(135,206,235);
+     
+ 
+ }
+ .navbar-link{
+     display:inline-block;
+     color:#FFFFFF;
+ }
+ 
+
+.mb-4, .my-4 {
+    margin-bottom:0;
+}

@@ -95,6 +95,10 @@ class TasksController < ApplicationController
     
   end
   
+  
+  def finished_items
+    @tasks=current_user.tasks.where(finishment: true)
+  end
   private
 
   def task_params

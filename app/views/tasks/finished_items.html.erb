@@ -1,0 +1,13 @@
+<div class="content">
+ <div class="row">
+    <h1>完了タスク一覧</h1>
+ </div>
+ <div class="row">
+    <% @tasks.each do |task| %>
+    
+        <div class="col-sm-3"><%=render "tasks/favorite_button", task: task %></div>
+        <div class="offset-sm-1 col-sm-4"><h2><%=task.content%></h2></div>
+        <div class="offset-sm-1 col-sm-3"><%=render "tasks/duplicate_button", task: task  %></div>
+    <% end %>
+ </div>
+</div>

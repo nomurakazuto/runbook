@@ -1,22 +1,37 @@
  
-  <div class="center">
+  
+<% if logged_in? %>
+    <div class="center">
     <div class="text-center">
       <div class="container"> 
           <div class="row">
-              <% if logged_in? %>
-                  <%= render "tasks/index" %>
+               <%= render "tasks/index" %>
+          </div>
+      </div>
+    </div> 
+    </div> 
               <% else %>
-                  <div class="jumbotron"><h2>仕事、学業で生じる課題を手順ごとに細かく分けて完成させよう</h2></div>
-                  <div class= "col-sm-12 jumbotron">
-                      <div class="row" >
-                          <div class="col-sm-5"><p>アカウントをお持ちでない方</p></div>
-                          <div class="col-sm-5"><%= link_to 'Sign up now!', signup_path %></div>
-                      </div>
-                      <div class="row">
-                          <div class="col-sm-5"><p>アカウントをお持ちの方</p></div>
-                          <div class="col-sm-5"><%= link_to 'Login', login_path%></div>
-                      </div>
-                  </div>
+                  <div class="center">
+                  <div class="text-center">
+                      <div class="container"> 
+                         <div class="row">
+                              <div class="container col-sm-12">
+                                  <div class="jumbotron col-sm-12"><h2>仕事、学業で生じる課題を手順ごとに細かく分けて完成させよう</h2></div>
+                                  <div class= "col-sm-12 jumbotron">
+                                      <div class="row" >
+                                         <div class="col-sm-5"><p>アカウントをお持ちでない方</p></div>
+                                         <div class="col-sm-5"><%= link_to 'Sign up now!', signup_path %></div>
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-sm-5"><p>アカウントをお持ちの方</p></div>
+                                          <div class="col-sm-5"><%= link_to 'Login', login_path%></div>
+                                      </div>
+                                  </div>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
               <% end %>
            </div>
       </div>    
